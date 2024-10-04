@@ -1,5 +1,5 @@
-businessshortcode = ""
+businessshortcode = "174379"
 phone_no = "254726688832"
-lipa_na_mpesa_passkey = ""
+lipa_na_mpesa_passkey =""
 consumer_key = ""
-comsumer_secret = ""
+consumer_secret = ""

@@ -10,18 +10,20 @@ import key
 unformated_time = datetime.now()
 formated_time = unformated_time.strftime("%Y%m%d%H%M%S")
 
+print(formated_time)
+
 data_to_encode = key.businessshortcode + key.lipa_na_mpesa_passkey + formated_time
 
-encoded = base64.b64encode(data_to_encode.encode())
-decoded_pass = encoded.decode("utf-8")
+password = base64.b64encode(data_to_encode.encode()).decode("utf-8")
+# decoded_pass = encoded.decode("utf-8")
 
 consumer_key = key.consumer_key
-consumer_secret = key.comsumer_secret
+consumer_secret = key.consumer_secret
 api_URL = (
     "https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials"
 )
 
-r = requests.get(api_URL, auth=HTTPBasicAuth(consumer_key,consumer_secret))
+r = requests.get(api_URL, auth=HTTPBasicAuth(consumer_key, consumer_secret))
 
 json_responce = r.json()
 
@@ -35,17 +37,20 @@ def lipa_na_mpeas():
 
     request = {
         "BusinessShortCode": key.businessshortcode,
-        "password": decoded_pass,
+        "Password": password,
         "Timestamp": formated_time,
         "TransactionType": "CustomerPayBillOnline",
         "Amount": "1",
-        "PartA": key.phone_no,
-        "PartB": key.businessshortcode,
+        "PartyA": key.phone_no,
+        "PartyB": key.businessshortcode,
         "PhoneNumber": key.phone_no,
-        "CallBackaurl": "https://ip_address:port/callback",
-        "AccountReference": " ",
-        "TransactionDesc": "shool fee",
+        "CallBackaurl": "https://mydomain.com/path",
+        "AccountReference": "test",
+        "TransactionDesc": "school fee",
     }
-    responce = requests.post(api_url, json=request, headers=headers)
+    response = requests.post(api_url, json=request, headers=headers)
+    print("Response: ", response.json())
+    print("password: ", password)
+    print(access_token)
 
-license()
+lipa_na_mpeas()

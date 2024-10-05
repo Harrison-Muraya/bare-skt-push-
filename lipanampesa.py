@@ -10,7 +10,8 @@ import key
 unformated_time = datetime.now()
 formated_time = unformated_time.strftime("%Y%m%d%H%M%S")
 
-print(formated_time)
+
+print(key.businessshortcode)
 
 data_to_encode = key.businessshortcode + key.lipa_na_mpesa_passkey + formated_time
 
@@ -26,7 +27,7 @@ api_URL = (
 r = requests.get(api_URL, auth=HTTPBasicAuth(consumer_key, consumer_secret))
 
 json_responce = r.json()
-
+print("authorization: ", json_responce)
 my_access_token = json_responce["access_token"]
 
 
@@ -39,18 +40,22 @@ def lipa_na_mpeas():
         "BusinessShortCode": key.businessshortcode,
         "Password": password,
         "Timestamp": formated_time,
-        "TransactionType": "CustomerPayBillOnline",
-        "Amount": "1",
+        "TransactionType": "CustomerBuyGoodsOnline",
+        "Amount": 1,
         "PartyA": key.phone_no,
         "PartyB": key.businessshortcode,
         "PhoneNumber": key.phone_no,
-        "CallBackaurl": "https://mydomain.com/path",
+        "CallBackurl": " https://59a6-102-210-25-30.ngrok-free.app",
         "AccountReference": "test",
         "TransactionDesc": "school fee",
     }
     response = requests.post(api_url, json=request, headers=headers)
+
+    print("Shortcode ", key.businessshortcode)
+    print("PassKey: ", key.lipa_na_mpesa_passkey)
+    print("timestamp: ",formated_time)
     print("Response: ", response.json())
     print("password: ", password)
-    print(access_token)
+    print("Access Token: ",access_token)
 
 lipa_na_mpeas()

@@ -45,7 +45,7 @@ def lipa_na_mpeas():
         "PartyA": key.phone_no,
         "PartyB": key.businessshortcode,
         "PhoneNumber": key.phone_no,
-        "CallBackurl": "https://59a6-102-210-25-30.ngrok-free.app/mpesa-callback/",
+        "CallBackurl": "https://agizapap.com/rideNeibaResponse",
         "AccountReference": "test",
         "TransactionDesc": "school fee",
     }
@@ -57,5 +57,7 @@ def lipa_na_mpeas():
     print("Response: ", response.json())
     print("password: ", password)
     print("Access Token: ",access_token)
+
+    print("headers: ", headers)
 
 lipa_na_mpeas()

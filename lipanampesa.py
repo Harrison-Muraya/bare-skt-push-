@@ -45,7 +45,7 @@ def lipa_na_mpeas():
         "PartyA": key.phone_no,
         "PartyB": key.businessshortcode,
         "PhoneNumber": key.phone_no,
-        "CallBackurl": " https://59a6-102-210-25-30.ngrok-free.app",
+        "CallBackurl": "https://59a6-102-210-25-30.ngrok-free.app/mpesa-callback/",
         "AccountReference": "test",
         "TransactionDesc": "school fee",
     }

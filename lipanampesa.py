@@ -29,22 +29,17 @@ def lipa_na_mpeas():
         "Password": password,
         "Timestamp": formated_time,
         "TransactionType": "CustomerBuyGoodsOnline",
-        "Amount": 10,
+        "Amount": 1,
         "PartyA": key.phone_no,
         "PartyB": key.businessshortcode,
         "PhoneNumber": key.phone_no,
-        "CallBackURL": "https://agizapap.com/rideNeibaResponse",
+        "CallBackURL": "https://mydomain.com/pat",
         "AccountReference": "test",
         "TransactionDesc": "school fee",
     }
     response = requests.post(api_url, json=request, headers=headers)
     print("Response: ", response.json()) 
 
-    # print("Shortcode ", key.businessshortcode)
-    # print("PassKey: ", key.lipa_na_mpesa_passkey)
-    # print("timestamp: ",formated_time)
-    # print("password: ", password)
-    # print("Access Token: ",access_token)
 
    
 lipa_na_mpeas()
